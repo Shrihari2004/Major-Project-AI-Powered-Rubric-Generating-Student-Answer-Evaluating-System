@@ -6,8 +6,7 @@ This is a comprehensive web application built with Streamlit that leverages Mach
 
 - **Document Parsing:** Extracts questions from uploaded PDF, Image (PNG/JPG), and DOCX files using PyPDF2, pytesseract, and python-docx.
 - **Automated Rubric Generation:**
-  - Uses a fine-tuned **T5 model** to generate preliminary grading rubrics for extracted questions.
-  - Enhances and structures the rubrics into a concise 3-criterion format using the **NVIDIA LLaMA API**.
+  - Uses a fine-tuned **T5 model** to generate and structure grading rubrics into a concise 3-criterion format for extracted questions.
 - **Student Answer Evaluation:**
   - Evaluates student answers against the generated rubric criteria using a fine-tuned **BERT sequence classification model**.
   - Provides detailed, point-by-point feedback and marks allocation.
@@ -18,7 +17,6 @@ This is a comprehensive web application built with Streamlit that leverages Mach
 
 - **Frontend:** Streamlit
 - **Machine Learning:** PyTorch, Hugging Face Transformers (T5, BERT)
-- **External API:** NVIDIA LLaMA API (meta/llama-3.1-8b-instruct)
 - **Document Processing:** PyPDF2, pytesseract, python-docx, ReportLab (for PDF generation)
 - **Data Manipulation:** Pandas
 
@@ -43,19 +41,7 @@ This is a comprehensive web application built with Streamlit that leverages Mach
    ```
    *(Note: You must also have Tesseract-OCR installed on your system for image text extraction to work).*
 
-4. **Environment Variables:**
-   The application uses the NVIDIA LLaMA API to enhance the generated rubrics. You must set your API key as an environment variable before running the app.
-   
-   **On Windows (Command Prompt):**
-   ```cmd
-   set NVIDIA_API_KEY=your_api_key_here
-   ```
-   **On Linux/macOS:**
-   ```bash
-   export NVIDIA_API_KEY="your_api_key_here"
-   ```
-
-5. **Run the application:**
+4. **Run the application:**
    ```bash
    streamlit run app.py
    ```
@@ -63,7 +49,7 @@ This is a comprehensive web application built with Streamlit that leverages Mach
 ## Folder Structure
 
 - `app.py`: The main Streamlit application containing the UI, model loading, and evaluation logic.
-- `files/rubrics.py`: Contains the logic for the NVIDIA LLaMA API integration used to enhance and format the rubrics.
+- `files/rubrics.py`: Contains the logic for enhancing and formatting the generated rubrics.
 - `final_rubric_model/`: Directory containing the fine-tuned T5 model weights (not tracked in Git due to size).
 - `final_criterion_model/`: Directory containing the fine-tuned BERT model weights (not tracked in Git due to size).
 
